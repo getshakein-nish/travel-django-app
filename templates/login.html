@@ -1,0 +1,62 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <style>
+        body{
+            background-image: url({% static 'images/home_slider.jpg' %});
+        }
+        .form{
+            display: flex;
+            justify-content: center;
+            margin-top: 15%;
+        }
+        .input{
+            margin: 5px;
+            height: 30px;
+            width: 200px;
+            border-radius: 4px;
+            outline: none;
+            font-weight: bold;
+            text-align: center;
+            background: white;
+            border: none;
+        }
+        .btn{
+            height: 30px;
+            width: 220px;
+            color: white;
+            background: black;
+            margin-top: 10px;
+        }
+        .header h3{
+            margin: 80px 0 0 80px;
+            color: white;
+        }
+        h3{
+            color: white;
+        }
+    </style>
+</head>
+<body>
+<header>
+    <h3>Travel Karo</h3>
+</header>
+    <div class="form">
+        <form action="login" method="post">
+        {% csrf_token %}
+        <input class="input" type="text" name="username" placeholder="username"><br>
+        <input class="input" type="password" name="password" placeholder="password"><br>
+        <input type="submit" class="btn" value="Login">
+    </form>
+    </div>
+{% for message in messages %}
+    <div>
+    <h4>{{ message }}</h4>
+    </div>
+{% endfor %}
+
+</body>
+</html>
